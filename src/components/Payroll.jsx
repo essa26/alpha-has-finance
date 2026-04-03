@@ -116,9 +116,9 @@ export default function Payroll({ staff, onUpdateStaff, currentUser, pendingNewS
       <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:18, flexWrap:"wrap", gap:10 }}>
         <h2 style={{ margin:0, fontSize:18, fontWeight:600, color:C.g800, fontFamily:FF }}>Monthly Payroll — {new Date().toLocaleDateString("en-GB", { month:"long", year:"numeric" })}</h2>
         <div style={{ display:"flex", gap:8, flexWrap:"wrap" }}>
-          {isSuper && <Btn onClick={exportCSV} style={{ fontSize:12, padding:"6px 12px" }}>Export CSV</Btn>}
-          {isSuper && <Btn variant={isLocked ? "danger" : "default"} onClick={toggleLock} style={{ fontSize:12, padding:"6px 12px" }}>{isLocked ? "Unlock Month" : "Lock Month"}</Btn>}
-          {isSuper && <Btn variant="primary" onClick={onAddEmployee}>+ Add Employee</Btn>}
+           <Btn onClick={exportCSV} style={{ fontSize:12, padding:"6px 12px" }}>Export CSV</Btn>
+           <Btn variant={isLocked ? "danger" : "default"} onClick={toggleLock} style={{ fontSize:12, padding:"6px 12px" }}>{isLocked ? "Unlock Month" : "Lock Month"}</Btn>
+           <Btn variant="primary" onClick={onAddEmployee}>+ Add Employee</Btn>
         </div>
       </div>
 
@@ -179,7 +179,7 @@ export default function Payroll({ staff, onUpdateStaff, currentUser, pendingNewS
               <TH c="Allowances" r /><TH c="Bonus" r />
               <TH c={`Deductions (${new Date().toLocaleDateString("en-GB", { month:"short" })})`} r />
               <TH c="Net Payout" r /><TH c="Payment" />
-              {isSuper && <TH c="" />}
+              <TH c="" />
             </tr>
           </thead>
           <tbody>
@@ -203,7 +203,7 @@ export default function Payroll({ staff, onUpdateStaff, currentUser, pendingNewS
                   <TD right>{md > 0 ? <div><span style={{ color:C.danger, fontWeight:500 }}>-{md.toLocaleString()}</span>{mDeds(s).map((d, j) => <div key={j} style={{ fontSize:10, color:C.g400 }}>{d.desc}</div>)}</div> : <span style={{ color:C.g400 }}>--</span>}</TD>
                   <TD right><span style={{ fontWeight:700, fontSize:14, color:net >= s.baseSalary ? C.success : C.danger }}>{net.toLocaleString()}</span><div style={{ fontSize:11, color:C.g400 }}>AED</div></TD>
                   <TD><span style={{ background:C.g100, color:C.g700, borderRadius:20, padding:"2px 8px", fontSize:11, whiteSpace:"nowrap", fontFamily:FF }}>{s.paymentMethod}</span></TD>
-                  {isSuper && <td style={{ padding:"9px 12px" }}>{!isLocked && <Btn onClick={() => setEditIdx(ri)} style={{ fontSize:12, padding:"4px 10px" }}>Edit</Btn>}</td>}
+                  <td style={{ padding:"9px 12px" }}>{!isLocked && <Btn onClick={() => setEditIdx(ri)} style={{ fontSize:12, padding:"4px 10px" }}>Edit</Btn>}</td>
                 </tr>
               );
             })}

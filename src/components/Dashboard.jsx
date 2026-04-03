@@ -15,7 +15,7 @@ const canAll = currentUser.role !== ROLES.INITIATOR;
   const [insight, setInsight] = useState("");
   const [aiLoad, setAiLoad]   = useState(false);
 
-  const ask = async (q) => {
+ const ask = async (q) => {
   setAiLoad(true);
   setInsight("");
   try {
@@ -44,11 +44,6 @@ const canAll = currentUser.role !== ROLES.INITIATOR;
   }
   setAiLoad(false);
 };
-      const d = await res.json();
-      setInsight(d.content?.[0]?.text || "No response.");
-    } catch (e) { setInsight("Connection error."); }
-    setAiLoad(false);
-  };
 
   const CARDS = {
     [ROLES.SUPER]:        [{ l:"Total Requests", v:vis.length, c:C.accent }, { l:"Pending Approval", v:pending + pendingApproval, c:C.warning }, { l:"Approved", v:approved, c:"#0369a1" }, { l:"Processed (AED)", v:totalAED.toLocaleString(), c:C.success }],
