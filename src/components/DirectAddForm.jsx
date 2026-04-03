@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { C, FF } from "../constants";
+import { C } from "../constants";
 import { IBox, Btn } from "./Primitives";
 import { EmpFields } from "./Primitives"; // already exported from Primitives
 

@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { C, FF, STATUS_META, ROLE_COLORS, CURRENCIES, PAY_METHODS, toB64 } from "../constants";
+import { C, FF, STATUS_META, ROLE_COLORS, PAY_METHODS, toB64 } from "../constants";
 
 export function Badge({ status }) {  
     const c = STATUS_META[status] || STATUS_META.Pending;

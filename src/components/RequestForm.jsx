@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { C, FF, ROLES, NON_SAL_TYPES, LOCATIONS, CURRENCIES, FREQUENCIES, SOURCE_ACCOUNTS } from "../constants";
-import { Sel, Inp, Txt, G2, IBox, Btn, FileUpload, Dvd, EmpFields } from "./Primitives";
+import { Sel, Inp, Txt, G2, IBox, Btn, FileUpload, EmpFields } from "./Primitives";
 
 export default function ReqForm({ onSubmit, onClose, currentUser, editData, staff }) {
 const isHM = currentUser.role === ROLES.HOUSE_MANAGER;

@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { C, FF, ROLES, ALL_TYPES, LOCATIONS, getCur, getAmt, getTitle, fmtDate, curMonth } from "../constants";
-import { Btn, Inp, Sel, Badge, IBox } from "./Primitives";
-import { BarChart } from "./Primitives";
+import { C, FF, ROLES, LOCATIONS, getCur, getAmt, getTitle, fmtDate, curMonth } from "../constants";
+import { Btn, Inp, Sel, Badge, BarChart } from "./Primitives";
 
 export default function Reports({ requests, staff, currentUser }) {
 const [dateFrom, setDateFrom] = useState("");

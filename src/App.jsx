@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import {
   ROLES, ROLE_COLORS, AUDIT_ACTIONS, INIT_USERS, INIT_STAFF, INIT_REQS, INIT_INVITES,
-  C, FF, gid, mkAudit, getTitle, getAmt, getCur, fmtAmt, curMonth,
+  C, FF, gid, mkAudit, getTitle, fmtAmt, curMonth,
 } from "./constants";
 import { Modal } from "./components/Primitives";
 import Dashboard    from "./components/Dashboard";
@@ -35,10 +35,10 @@ const [currentUser, setCurrentUser]       = useState(INIT_USERS[0]);
     setNotifications(n => ({ ...n, [uid]:[...(n[uid] || []), { message, at:new Date().toISOString().slice(0, 10) }] }));
   }, []);
 
-  useEffect(() => {
-    const u = users.find(x => x.id === currentUser.id);
-    if (u && (u.role !== currentUser.role || u.name !== currentUser.name)) setCurrentUser(u);
-  }, [users]);
+useEffect(() => {
+  const u = users.find(x => x.id === currentUser.id);
+  if (u && (u.role !== currentUser.role || u.name !== currentUser.name)) setCurrentUser(u);
+}, [users, currentUser.id, currentUser.name, currentUser.role]);
 
   const pendingNewStaff  = requests.filter(r => r.type === "Salary" && r.salarySubType === "new_employee" && r.status === "Pending Approval");
   const pendingProfiles  = profileRequests.filter(p => p.status === "pending").length;

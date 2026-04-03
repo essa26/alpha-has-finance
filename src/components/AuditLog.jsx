@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { C, FF, AUDIT_ACTIONS, fmtDate } from "../constants";
+import { C, FF, AUDIT_ACTIONS } from "../constants";
 import { Btn, IBox } from "./Primitives";
 
 export default function AuditLog({ logs }) {

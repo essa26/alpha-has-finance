@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { C, FF, SOURCE_ACCOUNTS, getCur, getAmt, getTitle, fmtAmt } from "../constants";
-import { Modal, Sel, Btn, FileUpload, IBox } from "./Primitives";
+import { Modal, Sel, Btn, FileUpload } from "./Primitives";
 import { fetchFxRate } from "../lib/fx";
 
 export default function ProcessModal({ req, onProcess, onClose }) {
@@ -22,7 +22,8 @@ const [src, setSrc]         = useState(req.sourceAccount || "");
     setFxLoading(false);
   };
 
-  useEffect(() => { if (!isAED && !fxRate) loadFx(); }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(() => { if (!isAED && !fxRate) loadFx(); }, []);
 
   const go = () => {
     if (!src) return alert("Select a Source Bank Account.");
