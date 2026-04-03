@@ -2,7 +2,7 @@ import { useState } from "react";
 import { C, FF, ROLES, AUDIT_ACTIONS, PAY_METHODS, calcLeave, tenure, fmtDate, fmtAmt, curMonth } from "../constants";
 import { Btn, Av, IBox, Modal, Inp, Sel, Dvd, G2 } from "./Primitives";
 
-export function StaffEditModal({ s, idx, onSave, onClose, month }) {
+export function StaffEditModal({ s, idx, onSave, onClose, month, isSuper }) {
 const [f, setF] = useState({ ...s });
   const set = (k, v) => setF(p => ({ ...p, [k]:v }));
   const [dd, setDd] = useState({ desc:"", amount:"" });
@@ -58,7 +58,7 @@ const [f, setF] = useState({ ...s });
 }
 
 export default function Payroll({ staff, onUpdateStaff, currentUser, pendingNewStaff, onApproveNewStaff, onRejectNewStaff, addAudit, onAddEmployee }) {
-  // paste the full Payroll function body from the artifactconst isSuper = currentUser.role === ROLES.SUPER;
+  const isSuper = currentUser.role === ROLES.SUPER;
   const isAcct  = currentUser.role === ROLES.ACCOUNTANT;
   const [editIdx, setEditIdx]   = useState(null);
   const [staffTab, setStaffTab] = useState("home");
@@ -168,7 +168,7 @@ export default function Payroll({ staff, onUpdateStaff, currentUser, pendingNewS
       )}
 
       {!isSuper && <IBox color={C.warning} bg={C.warningL}>Payroll editing is restricted to Super Users only.</IBox>}
-      {editIdx !== null && <StaffEditModal s={staff[editIdx]} idx={editIdx} onSave={saveStaff} onClose={() => setEditIdx(null)} month={month} />}
+      {editIdx !== null && <StaffEditModal s={staff[editIdx]} idx={editIdx} onSave={saveStaff} onClose={() => setEditIdx(null)} month={month} isSuper={isSuper} />}
 
       <div style={{ overflowX:"auto", borderRadius:12, border:`1px solid ${C.g200}` }}>
         <table style={{ width:"100%", borderCollapse:"collapse", minWidth:1150 }}>
